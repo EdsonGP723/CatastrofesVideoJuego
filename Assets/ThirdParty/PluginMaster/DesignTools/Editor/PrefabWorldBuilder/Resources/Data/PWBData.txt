@@ -20,7 +20,7 @@
     "_tempCollidersAction": 1,
     "_paletteManager": {
         "_selectedPaletteIdx": 0,
-        "_selectedBrushIdx": -1,
+        "_selectedBrushIdx": 10,
         "_showBrushName": false,
         "_viewList": false,
         "_showTabsInMultipleRows": false,
@@ -483,7 +483,7 @@
         ],
         "_selectedProfileName": "Default",
         "_unsavedProfile": {
-            "_radius": 1.0,
+            "_radius": 0.07761247456073761,
             "_paintTool": {
                 "_parentGlobalId": "",
                 "_autoCreateParent": true,
@@ -612,7 +612,7 @@
                 "z": 0.0
             },
             "_spacingType": 0,
-            "_minSpacing": 1.0,
+            "_minSpacing": 1.0000001192092896,
             "_randomizePositions": true,
             "_randomness": 1.0,
             "_paintOnSurfaceToolSettings": {
@@ -622,7 +622,7 @@
                 "_mode": 0,
                 "_paralellToTheSurface": true
             },
-            "_maxHeightFromCenter": 2.0,
+            "_maxHeightFromCenter": 0.07761247456073761,
             "_heightType": 1,
             "_avoidOverlapping": 4,
             "_layerFilter": {
@@ -650,7 +650,7 @@
                 "_max": 60.0
             },
             "_terrainLayerIds": [],
-            "_showPreview": false
+            "_showPreview": true
         }
     },
     "_gravityToolManager": {
@@ -1712,7 +1712,7 @@
             "_cellSizeType": 0,
             "_cellSize": {
                 "x": 1.0,
-                "y": 1.0
+                "y": 0.0625
             },
             "_rotation": {
                 "x": 0.0,
@@ -2142,7 +2142,7 @@
         ],
         "_selectedProfileName": "Default",
         "_unsavedProfile": {
-            "_radius": 1.0,
+            "_radius": 1.4999186992645264,
             "_modifierTool": {
                 "_command": 0,
                 "_allButSelected": false,
@@ -2726,9 +2726,9 @@
             "_sameParentAsSource": true,
             "_mirrorPose": {
                 "position": {
-                    "x": 0.0,
+                    "x": -0.3649355173110962,
                     "y": 0.0,
-                    "z": 0.0
+                    "z": -0.6174423694610596
                 },
                 "rotation": {
                     "x": 0.0,
@@ -2861,11 +2861,11 @@
     },
     "_snapManager": {
         "_settings": {
-            "_snappingEnabled": false,
+            "_snappingEnabled": true,
             "_snappingOn": {
-                "x": false,
+                "x": true,
                 "y": false,
-                "z": false
+                "z": true
             },
             "_visibleGrid": false,
             "_gridOn": {
@@ -2873,11 +2873,11 @@
                 "y": true,
                 "z": false
             },
-            "_lockedGrid": false,
+            "_lockedGrid": true,
             "_step": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
+                "x": 0.5,
+                "y": 0.5,
+                "z": 0.5
             },
             "_origin": {
                 "x": 0.0,
