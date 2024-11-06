@@ -3778,7 +3778,7 @@ PrefabInstance:
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6
+      value: 5.814
       objectReference: {fileID: 0}
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
@@ -5274,7 +5274,7 @@ PrefabInstance:
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8
+      value: 8.125
       objectReference: {fileID: 0}
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
@@ -12999,7 +12999,7 @@ PrefabInstance:
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9
+      value: 8.839
       objectReference: {fileID: 0}
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
@@ -13495,6 +13495,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 02e0131eb2988d74ea54bec0374c6890,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e9b6c57603ca55f48aee6a8eed220041, type: 2}
     - target: {fileID: 919132149155446097, guid: 02e0131eb2988d74ea54bec0374c6890,
         type: 3}
       propertyPath: m_Name
@@ -16548,7 +16553,7 @@ MonoBehaviour:
     IsHidden: 0
 --- !u!4 &1488485157
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -18526,6 +18531,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1570339714}
     m_Modifications:
+    - target: {fileID: 6952410583799311899, guid: 6c5cc3ce7bce42544a31d058354f6e9b,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: eb3b825a26c2dfc4cb3008abcf41ed7f, type: 2}
     - target: {fileID: 8084172761634297204, guid: 6c5cc3ce7bce42544a31d058354f6e9b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20857,6 +20867,7 @@ GameObject:
   - component: {fileID: 1946387871}
   - component: {fileID: 1946387870}
   - component: {fileID: 1946387873}
+  - component: {fileID: 1946387874}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -20882,7 +20893,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.08235294, g: 0.05490196, b: 0.0627451, a: 0}
+  m_BackGroundColor: {r: 0.101960786, g: 0.101960786, b: 0.14117648, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -20937,7 +20948,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 37.2, y: -15, z: 0}
 --- !u!114 &1946387873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20970,6 +20981,50 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &1946387874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946387869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1001 &1959785927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22427,7 +22482,7 @@ PrefabInstance:
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11
+      value: 11.16
       objectReference: {fileID: 0}
     - target: {fileID: 1789323763614940391, guid: 9eb3837f2ae66114598ab940f2e4d010,
         type: 3}
