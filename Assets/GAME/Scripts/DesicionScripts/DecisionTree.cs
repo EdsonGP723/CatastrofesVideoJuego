@@ -3,19 +3,23 @@ using UnityEngine;
 public class DecisionTree : MonoBehaviour
 {
     public DecisionNode rootNode;
+    public DecisionNode currentNode;
 
     public void InitializeTree(DecisionNode node)
     {
         rootNode = node;
+        currentNode = node;
     }
 
-    void DisplayNode(DecisionNode node)
+    public void DisplayNode(DecisionNode node)
     {
         if (node == null)
         {
             Debug.LogError("El nodo actual es nulo.");
             return;
         }
+
+        currentNode = node;
 
         Debug.Log(node.decisionText);
         for (int i = 0; i < node.options.Count; i++)
@@ -26,17 +30,30 @@ public class DecisionTree : MonoBehaviour
 
     public void MakeDecision(int optionIndex)
     {
-        if (optionIndex < rootNode.options.Count)
+        if (optionIndex < currentNode.options.Count)
         {
-            DisplayNode(rootNode.options[optionIndex]);
-            if (!string.IsNullOrEmpty(rootNode.options[optionIndex].consequence))
+            DecisionNode nextNode = currentNode.options[optionIndex];
+            if (!string.IsNullOrEmpty(nextNode.consequence) && nextNode.options.Count == 0)
             {
-                Debug.Log(rootNode.options[optionIndex].consequence);
+                Debug.Log(nextNode.consequence);
+            }
+            else
+            {
+                UpdateDecisionText(optionIndex, "Esta opción ya ha sido elegida.");
+                DisplayNode(nextNode);
             }
         }
         else
         {
             Debug.Log("Opción no válida");
+        }
+    }
+
+    public void UpdateDecisionText(int optionIndex, string newText)
+    {
+        if (optionIndex < currentNode.options.Count)
+        {
+            currentNode.options[optionIndex].decisionText = newText;
         }
     }
 }

@@ -1,14 +1,12 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.UI;
 
 public class DecisionTreeUI : MonoBehaviour
 {
     public DecisionTree decisionTree;
     public TMP_Text decisionText;
     public Button[] optionButtons;
-    private DecisionNode currentNode;
 
     void Start()
     {
@@ -30,7 +28,6 @@ public class DecisionTreeUI : MonoBehaviour
             return;
         }
 
-        // Cambiar  desiciones según la escena que se cargue
         string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         DecisionNode rootNode = null;
 
@@ -56,22 +53,14 @@ public class DecisionTreeUI : MonoBehaviour
 
     void DisplayNode(DecisionNode node)
     {
-        currentNode = node;
-
-        if (currentNode == null)
-        {
-            Debug.LogError("El nodo actual es nulo.");
-            return;
-        }
-
-        decisionText.text = currentNode.decisionText;
+        decisionText.text = node.decisionText;
 
         for (int i = 0; i < optionButtons.Length; i++)
         {
-            if (i < currentNode.options.Count)
+            if (i < node.options.Count)
             {
                 optionButtons[i].gameObject.SetActive(true);
-                optionButtons[i].GetComponentInChildren<TMP_Text>().text = currentNode.options[i].decisionText;
+                optionButtons[i].GetComponentInChildren<TMP_Text>().text = node.options[i].decisionText;
                 int optionIndex = i;
                 optionButtons[i].onClick.RemoveAllListeners();
                 optionButtons[i].onClick.AddListener(() => OnOptionSelected(optionIndex));
@@ -85,16 +74,7 @@ public class DecisionTreeUI : MonoBehaviour
 
     void OnOptionSelected(int optionIndex)
     {
-        if (optionIndex < currentNode.options.Count)
-        {
-            DecisionNode nextNode = currentNode.options[optionIndex];
-            DisplayNode(nextNode);
-
-            if (!string.IsNullOrEmpty(nextNode.consequence))
-            {
-                Debug.Log(nextNode.consequence);
-                decisionText.text = nextNode.consequence;
-            }
-        }
+        decisionTree.MakeDecision(optionIndex);
+        DisplayNode(decisionTree.currentNode);
     }
 }

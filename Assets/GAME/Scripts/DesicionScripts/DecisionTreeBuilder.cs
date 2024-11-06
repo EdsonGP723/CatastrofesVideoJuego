@@ -5,37 +5,42 @@ public class DecisionTreeBuilder
 {
     public static DecisionNode Earthquake()
     {
-        // Crear nodos específicos para la escena del terremoto
-        DecisionNode rootNode = new DecisionNode("¿Quieres tomar el camino de la izquierda o de la derecha?");
-        DecisionNode leftPath = new DecisionNode("Has elegido el camino de la izquierda.");
-        DecisionNode rightPath = new DecisionNode("Has elegido el camino de la derecha.");
-        
-        rootNode.options.Add(leftPath);
-        rootNode.options.Add(rightPath);
+        DecisionNode rootNode = new DecisionNode("Comienza el sismo. ¿Te quedas en una columna o te metes debajo del escritorio de madera del profesor?");
 
-        // Primera ronda
-        rightPath.consequence = "El camino está bloqueado por un árbol caído. Fin del juego.";
+        DecisionNode columnPath = new DecisionNode("Te quedas en una columna");
+        DecisionNode deskPath = new DecisionNode("Te metes debajo del escritorio de madera del profesor");
 
-        DecisionNode secondDecision = new DecisionNode("Encuentras un río. ¿Cruzar o rodear?");
-        leftPath.options.Add(secondDecision);
+        rootNode.options.Add(columnPath);
+        rootNode.options.Add(deskPath);
 
-        // Segunda ronda
-        DecisionNode thirdDecision = new DecisionNode("Encuentras un puente. ¿Cruzar o buscar otra ruta?");
-        DecisionNode wrongSecondDecision = new DecisionNode("El río estaba infestado de cocodrilos. Fin del juego.");
-        secondDecision.options.Add(thirdDecision);
-        secondDecision.options.Add(wrongSecondDecision);
+        deskPath.consequence = "Te cae un pedazo de techo y te aplasta.";
 
-        // Tercera ronda
-        DecisionNode finalDecision = new DecisionNode("Encuentras un tesoro. ¿Tomar o dejar?");
-        DecisionNode wrongThirdDecision = new DecisionNode("El puente se derrumbó. Fin del juego.");
-        thirdDecision.options.Add(finalDecision);
-        thirdDecision.options.Add(wrongThirdDecision);
+        DecisionNode secondDecision = new DecisionNode("El sismo continúa. ¿Regresas por tu mochila o la dejas?");
+        DecisionNode leaveBackpackPath = new DecisionNode("Dejar la mochila y seguir evacuando");
+        DecisionNode retrieveBackpackPath = new DecisionNode("Regresas por la mochila");
 
-        // Consecuencia final correcta
-        finalDecision.consequence = "Tomaste el tesoro sin problemas y ganaste. Fin del juego.";
+        columnPath.options.Add(secondDecision);
+
+        secondDecision.options.Add(leaveBackpackPath);
+        secondDecision.options.Add(retrieveBackpackPath);
+
+        retrieveBackpackPath.consequence = "Al regresar, el techo se desprende y te aplasta, pero con tu mochila en mano.";
+
+        DecisionNode thirdDecision = new DecisionNode("Encuentras las escaleras y el elevador. ¿Cuál usas para evacuar?");
+        DecisionNode elevatorPath = new DecisionNode("Usar el elevador");
+        DecisionNode stairsPath = new DecisionNode("Usar las escaleras");
+
+        leaveBackpackPath.options.Add(thirdDecision);
+
+        thirdDecision.options.Add(elevatorPath);
+        thirdDecision.options.Add(stairsPath);
+
+        elevatorPath.consequence = "El sismo se intensifica y el elevador se desploma.";
+        stairsPath.consequence = "Logras reunirte con tus compañeros en el punto de evacuación. ¡Sobreviviste al temblor!";
 
         return rootNode;
     }
+
 
     public static DecisionNode Fire()
     {
