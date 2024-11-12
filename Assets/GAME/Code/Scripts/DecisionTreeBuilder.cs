@@ -4,6 +4,7 @@ using UnityEngine.Playables;
 public class DecisionTreeBuilder : MonoBehaviour
 {
     public DecisionUI decisionUI;
+    public DecisionTimer decisionTimer; // Referencia al temporizador
     public GameObject[] correctPlayableObjects;
     public GameObject[] incorrectPlayableObjects;
     public GameObject[] intermediatePlayableObjects; // Animaciones intermedias
@@ -16,6 +17,7 @@ public class DecisionTreeBuilder : MonoBehaviour
     {
         sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         decisionUI.onDecisionMade += HandleDecision;
+        decisionTimer.onTimerEnd += OnTimerEnd; // Suscribir al evento de finalización del temporizador
         StartRound();
     }
 
@@ -23,6 +25,7 @@ public class DecisionTreeBuilder : MonoBehaviour
     {
         HideAllPlayables();
         decisionUI.ShowUI(false); // Asegurar que la UI esté oculta al empezar una nueva ronda
+        decisionTimer.ShowTimer(false); // Ocultar el temporizador al empezar una nueva ronda
         PlayIntermediateAnimation(); // Reproducir animación intermedia antes de mostrar las decisiones
     }
 
@@ -58,6 +61,7 @@ public class DecisionTreeBuilder : MonoBehaviour
             default:
                 decisionUI.SetQuestion("¡Has ganado!");
                 decisionUI.ShowUI(true); // Mostrar la UI al ganar el juego
+                decisionTimer.ShowTimer(false); // Ocultar el temporizador al ganar el juego
                 break;
         }
     }
@@ -88,6 +92,7 @@ public class DecisionTreeBuilder : MonoBehaviour
         }
 
         decisionUI.ShowUI(true); // Mostrar la UI con los textos actualizados durante la animación intermedia
+        decisionTimer.StartTimer(); // Iniciar el temporizador
     }
 
     void HandleDecision(bool isCorrect)
@@ -95,6 +100,7 @@ public class DecisionTreeBuilder : MonoBehaviour
         PlayableDirector director;
 
         decisionUI.ShowUI(false); // Ocultar la UI al comenzar cualquier animación
+        decisionTimer.StopTimer(); // Detener el temporizador
 
         // Desactivar la animación intermedia actual si está activa
         if (previousIntermediateRound >= 0)
@@ -170,12 +176,23 @@ public class DecisionTreeBuilder : MonoBehaviour
 
     void OnIntermediatePlayableDirectorStopped(PlayableDirector director)
     {
+        decisionUI.ShowUI(true); // Mostrar la UI después de la animación intermedia
+        decisionTimer.StartTimer(); // Iniciar el temporizador
+        decisionTimer.ShowTimer(true); // Mostrar el temporizador
         ShowRoundChoices(); // Mostrar las decisiones de la ronda siguiente
     }
 
     void OnIncorrectPlayableDirectorStopped(PlayableDirector director)
     {
         decisionUI.SetQuestion("Respuesta incorrecta. Fin del juego.");
-        decisionUI.ShowButtons(false);
+        decisionUI.ShowQuestion(true); // Mostrar solo el texto al final de la animación incorrecta
+        decisionUI.ShowButtons(false); // Asegurar que los botones no estén visibles
+        decisionTimer.ShowTimer(false); // Ocultar el temporizador
+    }
+
+    void OnTimerEnd()
+    {
+        // Ejecutar automáticamente la decisión incorrecta cuando el temporizador llegue a 0
+        HandleDecision(false);
     }
 }
