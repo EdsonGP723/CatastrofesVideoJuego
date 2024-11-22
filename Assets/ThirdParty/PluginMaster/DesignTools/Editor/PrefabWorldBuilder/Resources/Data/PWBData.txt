@@ -20,7 +20,7 @@
     "_tempCollidersAction": 1,
     "_paletteManager": {
         "_selectedPaletteIdx": 0,
-        "_selectedBrushIdx": 10,
+        "_selectedBrushIdx": 20,
         "_showBrushName": false,
         "_viewList": false,
         "_showTabsInMultipleRows": false,
@@ -2142,7 +2142,7 @@
         ],
         "_selectedProfileName": "Default",
         "_unsavedProfile": {
-            "_radius": 1.4999186992645264,
+            "_radius": 0.43523651361465456,
             "_modifierTool": {
                 "_command": 0,
                 "_allButSelected": false,
@@ -2880,8 +2880,8 @@
                 "z": 0.5
             },
             "_origin": {
-                "x": 0.0,
-                "y": 0.0,
+                "x": 0.5,
+                "y": -5.0,
                 "z": 0.0
             },
             "_rotation": {
