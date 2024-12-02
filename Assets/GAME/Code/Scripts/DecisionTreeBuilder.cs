@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -8,6 +9,7 @@ public class DecisionTreeBuilder : MonoBehaviour
     public GameObject[] correctPlayableObjects;
     public GameObject[] incorrectPlayableObjects;
     public GameObject[] intermediatePlayableObjects; // Animaciones intermedias
+    public GameObject winPanel, gameOverPanel;
     private int currentRound = 0; // Empezamos en la ronda 0
     private string sceneName;
     private int previousIntermediateRound = -1; // Para rastrear la animación intermedia anterior
@@ -62,6 +64,8 @@ public class DecisionTreeBuilder : MonoBehaviour
                 decisionUI.SetQuestion("¡Has ganado!");
                 decisionUI.ShowUI(true); // Mostrar la UI al ganar el juego
                 decisionTimer.ShowTimer(false); // Ocultar el temporizador al ganar el juego
+                StartCoroutine(WaitForOneSecond());
+                winPanel.SetActive(true);
                 break;
         }
     }
@@ -188,6 +192,9 @@ public class DecisionTreeBuilder : MonoBehaviour
         decisionUI.ShowQuestion(true); // Mostrar solo el texto al final de la animación incorrecta
         decisionUI.ShowButtons(false); // Asegurar que los botones no estén visibles
         decisionTimer.ShowTimer(false); // Ocultar el temporizador
+        StartCoroutine(WaitForOneSecond());
+        gameOverPanel.SetActive(true);
+
     }
 
     void OnTimerEnd()
@@ -195,4 +202,11 @@ public class DecisionTreeBuilder : MonoBehaviour
         // Ejecutar automáticamente la decisión incorrecta cuando el temporizador llegue a 0
         HandleDecision(false);
     }
+
+    private IEnumerator WaitForOneSecond() 
+    { 
+        yield return new WaitForSeconds(3f); 
+        
+    }
+    
 }
