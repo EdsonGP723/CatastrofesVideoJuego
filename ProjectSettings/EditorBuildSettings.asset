@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/GAME/World/Scenes/Menu.unity
     guid: e7992fa573d2459408a14b7b8ea970cb
   - enabled: 1
-    path: Assets/GAME/World/Scenes/Earthquake.unity
+    path: Assets/GAME/World/Scenes/MainScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

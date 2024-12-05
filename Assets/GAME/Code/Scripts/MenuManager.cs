@@ -1,19 +1,27 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Método para cargar una escena por su nombre
+    public Animator transition;
+    public float transitionTime = 1f;
+
     public void LoadScene(string sceneName)
     {
+        StartCoroutine(AsyncScene(sceneName));
+    }
+
+    public IEnumerator AsyncScene(string sceneName)
+    {
+        Debug.Log("Happens");
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
     }
 
-    // Método para salir del juego
     public void QuitGame()
     {
-      
         Application.Quit();
-        
     }
 }

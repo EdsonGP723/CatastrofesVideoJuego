@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 828e1167a5156b64daec21f779d70401
+guid: 69d653d4b37e27c49bac2f96145be62c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - FORCED SQUARE
+  - TT Chocolates Trl
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -4,12 +4,21 @@ using UnityEngine.Playables;
 
 public class DecisionTreeBuilder : MonoBehaviour
 {
+    [Header("Game Settings")]
     public DecisionUI decisionUI;
     public DecisionTimer decisionTimer; // Referencia al temporizador
     public GameObject[] correctPlayableObjects;
     public GameObject[] incorrectPlayableObjects;
     public GameObject[] intermediatePlayableObjects; // Animaciones intermedias
+
+    [Header("UI Elements")]
     public GameObject winPanel, gameOverPanel;
+
+    [Header("Refferences")]
+    public CinemachineShakerController cameraShake;
+    [Range(0f, 10f)] public float intensity;
+    [Range(0f, 20f)] public float shakeTime;
+
     private int currentRound = 0; // Empezamos en la ronda 0
     private string sceneName;
     private int previousIntermediateRound = -1; // Para rastrear la animación intermedia anterior
@@ -29,6 +38,9 @@ public class DecisionTreeBuilder : MonoBehaviour
         decisionUI.ShowUI(false); // Asegurar que la UI esté oculta al empezar una nueva ronda
         decisionTimer.ShowTimer(false); // Ocultar el temporizador al empezar una nueva ronda
         PlayIntermediateAnimation(); // Reproducir animación intermedia antes de mostrar las decisiones
+
+        Debug.Log("SceneStart");
+        cameraShake.ShakeCamera(intensity, shakeTime);
     }
 
     void HideAllPlayables()
